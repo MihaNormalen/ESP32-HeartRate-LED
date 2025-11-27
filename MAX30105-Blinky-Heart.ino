@@ -9,7 +9,7 @@ const int LED_PIN = 4; // Varna LED dioda za fade
 const int MAX_BRIGHTNESS = 255; 
 const int FADE_DURATION_MS = 300; 
 
-// I2C pini (VAŠA POTRJENA NASTAVITEV)
+// I2C pini 
 const int SDA_PIN = 21; 
 const int SCL_PIN = 22; 
 
@@ -21,7 +21,7 @@ long lastBeat = 0;
 float beatsPerMinute;
 int beatAvg; 
 
-// SPREMENLJIVKE ZA GLADKO UTRIBLJANJE
+// SPREMENLJIVKE ZA GLADKO UTRIPANJE
 unsigned long lastBlinkTime = 0;
 unsigned long lastBlinkUpdate = 0;
 const unsigned long UPDATE_INTERVAL_MS = 5000; 
@@ -59,7 +59,7 @@ void setup()
   Serial.begin(115200);
   Serial.println("Inicializacija MAX30102. I2C na 21/22. LED fade aktiviran.");
 
-  // Inicializacija I2C na vaših določenih pinih 
+  // Inicializacija I2C 
   Wire.begin(SDA_PIN, SCL_PIN); 
   Wire.setClock(400000); 
 
@@ -116,7 +116,7 @@ void loop()
       lastBlinkUpdate = currentTime; 
   }
 
-  // 3. LOGIKA UTRIBLJANJA LED GLEDE NA SMOOTH BPM
+  // 3. LOGIKA UTRIPANJA LED GLEDE NA SMOOTH BPM
   if (smoothBPM > 0) {
       unsigned long pulseInterval = 60000 / smoothBPM; 
       
@@ -149,3 +149,4 @@ void loop()
   
   Serial.println();
 }
+
